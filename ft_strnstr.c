@@ -30,7 +30,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	return (NULL);
 }
 
-/* int		main(void)
+/*int		main(void)
 {
 	char	str[] = "Ciao come stai?";
 	char	str2[] = "come";
@@ -39,4 +39,4 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	char	*res = ft_strnstr(str, str2, len);
 
 	printf("Strnstr:	%s", res);
-} */
+}*/
