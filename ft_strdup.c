@@ -15,9 +15,11 @@ char	*ft_strdup(const char *s1)
 {
 	char			*res;
 	unsigned int	i;
+	int				len;
 
 	i = 0;
-	res = ft_calloc(ft_strlen(s1) + 1, sizeof(char));
+	len = ft_strlen(s1);
+	res = ft_calloc(len + 1, sizeof(char));
 	if (!res)
 		return (NULL);
 	while (s1[i] != '\0')

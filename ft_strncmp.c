@@ -22,7 +22,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	ptr2 = (unsigned char *)s2;
 	if (n == 0)
 		return (0);
-	while ((ptr1[i] != '\0' || ptr2[i] != '\0') && i < n)
+	while ((ptr1[i] || ptr2[i]) && i < n)
 	{
 		if (ptr1[i] != ptr2[i])
 			return (ptr1[i] - ptr2[i]);
@@ -30,11 +30,12 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-/*int		main()
+/* int		main()
 {
 	const char s1[] = "test\200";
 	const char s2[] = "test\0";
 	size_t n = 6;
 
 	ft_strncmp(s1, s2, n);
-}*/
+}
+ */
