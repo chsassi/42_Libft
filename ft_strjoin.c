@@ -15,20 +15,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char			*res;
 	size_t			s1_len;
-	size_t			s2_len;
 	unsigned int	i;
 	unsigned int	j;
 	unsigned int	len;
 
 	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	len = s1_len + s2_len + 1;
+	len = s1_len + ft_strlen(s2) + 1;
 	res = malloc(sizeof(char) * len);
 	if (!res)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (i < ft_strlen(s1))
+	while (i < s1_len)
 		res[i++] = s1[j++];
 	j = 0;
 	while (i < len)
