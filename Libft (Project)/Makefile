@@ -5,6 +5,11 @@ CFLAGS = -Wall -Wextra -Werror
 COMPILE = $(CC) $(CFLAGS) -c
 ARCHIVE = ar rc $(NAME)
 
+GREEN=\033[0;32m
+RED=\033[0;31m
+BLUE=\033[0;34m
+YELLOW=\033[0;33m
+
 SRC =	./ft_isalpha.c \
 		./ft_isdigit.c \
 		./ft_isalnum.c \
@@ -58,12 +63,12 @@ all: $(NAME)
 $(NAME): $(OBJ) $(HNAME)
 	@$(COMPILE) $(SRC)
 	@$(ARCHIVE) $(OBJ)
-	@echo "Mandatory Part Compiled!📖✅\033[0;37m"
+	@echo "$(YELLOW)Mandatory Part Compiled! 📖✅"
 
 bonus: $(OBJ_BONUS) $(HNAME)
 	@$(COMPILE) $(SRC_BONUS)
 	@$(ARCHIVE) $(OBJ_BONUS)
-	@echo "Bonus Part Compiled!📖✅\033[0;37m"
+	@echo "$(GREEN)Bonus Part Compiled! 📖✅"
 
 RM = rm -f
 

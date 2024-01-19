@@ -7,6 +7,11 @@ ARCHIVE = ar rc $(NAME)
 PRINTF_DIR = ./ft_printf
 GET_NEXT_LINE_DIR = ./get_next_line
 
+GREEN=\033[0;32m
+RED=\033[0;31m
+BLUE=\033[0;34m
+YELLOW=\033[0;33m
+
 SRC =	./ft_isalpha.c \
 		./ft_isdigit.c \
 		./ft_isalnum.c \
@@ -58,7 +63,7 @@ all: $(NAME)
 $(NAME): PRINTF_COMP GNL_COMP $(OBJ) $(HNAME)
 	@$(COMPILE) $(SRC)
 	@$(ARCHIVE) $(NAME) $(OBJ)
-	@echo "Libft Compiled!📖✅\033[0;37m"
+	@echo "$(BLUE)LIBFT COMPILED! 📖✅"
 
 PRINTF_COMP:
 	$(MAKE) -C $(PRINTF_DIR)
