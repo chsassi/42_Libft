@@ -8,8 +8,11 @@ Students are required to implement a wide range of functions, ranging from basic
 Here is a brief list of some key functions that students are required to implement:
 
 String Manipulation Functions: ft_strlen, ft_strcpy, ft_strncpy, ft_strdup, etc.
+
 Character Manipulation Functions: ft_isalpha, ft_isdigit, ft_isalnum, etc.
+
 Conversion Functions: ft_atoi, ft_itoa, etc.
+
 List Manipulation Functions: ft_lstnew, ft_lstadd_front, ft_lstadd_back, etc.
 
 🇮🇹
@@ -20,8 +23,11 @@ Gli studenti devono implementare una vasta gamma di funzioni, che vanno dai conc
 Ecco un breve elenco di alcune delle funzioni chiave che gli studenti sono tenuti a implementare:
 
 Funzioni di Manipolazione delle Stringhe: ft_strlen, ft_strcpy, ft_strncpy, ft_strdup, ecc.
+
 Funzioni di Manipolazione dei Caratteri: ft_isalpha, ft_isdigit, ft_isalnum, ecc.
+
 Funzioni di Conversione: ft_atoi, ft_itoa, ecc.
+
 Funzioni di Manipolazione delle Liste: ft_lstnew, ft_lstadd_front, ft_lstadd_back, ecc.
 
 Moulinette: 125/100
