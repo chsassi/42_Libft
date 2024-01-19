@@ -58,10 +58,12 @@ all: $(NAME)
 $(NAME): $(OBJ) $(HNAME)
 	@$(COMPILE) $(SRC)
 	@$(ARCHIVE) $(OBJ)
+	@echo "Mandatory Part Compiled!📖✅\033[0;37m"
 
 bonus: $(OBJ_BONUS) $(HNAME)
 	@$(COMPILE) $(SRC_BONUS)
 	@$(ARCHIVE) $(OBJ_BONUS)
+	@echo "Bonus Part Compiled!📖✅\033[0;37m"
 
 RM = rm -f
 
