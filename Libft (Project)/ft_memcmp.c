@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chsassi <chsassi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:47:25 by chsassi           #+#    #+#             */
+/*   Created: 2023/10/14 00:23:15 by chsassi           #+#    #+#             */
 /*   Updated: 2023/10/14 16:17:39 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
 
-	if (size == 0)
-		return (ft_strlen(src));
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
 	i = 0;
-	while (src[i] && i < size - 1)
+	while (i < n)
 	{
-		dest[i] = src[i];
+		if (ptr1[i] != ptr2[i])
+		{
+			return (ptr1[i] - ptr2[i]);
+		}
 		i++;
 	}
-	dest[i] = '\0';
-	return ((size_t)ft_strlen(src));
+	return (0);
 }
 
-/* int		main(void)
+/* int	main(void)
 {
-	char	*src = "ciao";
-	char	dest[5] = "Ciao";
-	size_t	i = ft_strlcpy(dest, src, 4);
-	
-	printf("Strlcpy:	%li", i);
+	const void	*s1 = "Casa mia";
+	const void	*s2 = "Casamia";
+	size_t		n;
+
+	printf("Cmp: %i", ft_memcmp(s1, s2, 5));
 } */
