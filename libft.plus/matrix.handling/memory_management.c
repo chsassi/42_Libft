@@ -12,53 +12,49 @@
 
 #include "libft.h"
 
-void	mtx_alloc(char **mtx, int rows, int cols)
+char	**mtx_alloc(int rows, int cols)
 {
-	int	i;
+	int		i;
+	char	**mtx;
 
 	i = 0;
-	mtx = (char**)malloc(rows * sizeof(char*));
+	mtx = ft_calloc(rows, sizeof(char*));
 	if (!mtx)
-		ft_printf("Errore during row allocation.\n");
+		ft_printf("Error during row allocation.\n");
 	while (i < rows)
 	{
-		mtx[i] = (char *)malloc(cols * sizeof(char));
+		mtx[i] = ft_calloc(cols, sizeof(char));
 		if (!mtx[i])
-			ft_printf("Errore during col allocation.\n");
+			ft_printf("Error during col allocation.\n");
 		i++;
 	}
+	return (mtx);
 }
 
 char	**copy_mtx(char** mtx)
 {
 	char** res;
 	int rows;
-	int cols;
 
 	rows = -1;
-	res = ft_calloc(count_rows(mtx) , sizeof(char*));
-	while(mtx[++rows])
-	{
-		cols = -1;
-		while(mtx[rows][++cols])
-			res[rows] = ft_strdup(mtx[rows]);
-	}
+	res = ft_calloc(count_rows(mtx), sizeof(char *));
+	while (mtx[++rows])
+		res[rows] = ft_strdup(mtx[rows]);
 	return (res);
 }
 
 void	free_mtx(char **mtx)
 {
-	size_t	i;
+	int	i;
+	int len;
 
+	len = count_rows(mtx);
 	i = 0;
-	if (!mtx)
-		return ;
-	while (mtx[i])
+	while (i < len)
 	{
 		free(mtx[i]);
 		mtx[i] = NULL;
 		i++;
 	}
 	free(mtx);
-	mtx = NULL;
 }
