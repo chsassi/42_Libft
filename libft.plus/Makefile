@@ -29,6 +29,7 @@ SRC = ./char.handling/ft_isalnum.c \
 	./char.handling/ft_isprint.c \
 	./char.handling/ft_tolower.c \
 	./char.handling/ft_toupper.c \
+	./conversions/ft_atol.c \
 	./conversions/ft_atoi.c \
 	./conversions/ft_itoa.c \
 	./conversions/ft_putnbr_fd.c \
