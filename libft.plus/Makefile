@@ -88,6 +88,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@echo "$(BLUE)	LIBFT COMPILED! 📖✅$(RESET)"
 	@$(ARCHIVE) $(OBJ)
+
 RM = rm -f
 
 clean:
@@ -96,9 +97,10 @@ clean:
 fclean: clean
 	@$(RM) */**/*.o
 	@$(RM) $(NAME)
-	@echo "$(RED)	LIBFT DESTROYED! 📖✅$(RESET)"
+	@echo "$(RED)	LIBFT DESTROYED! 📖🔴$(RESET)"
 
 re: fclean all
 
 # .SILENT:
+
 .PHONY: all clean fclean re
