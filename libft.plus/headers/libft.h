@@ -29,6 +29,8 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+char		*binary_to_octet(int nb);
+
 /**
  * @brief Converts a string to an integer.
  * @param str a pointer to the string to be converted.
@@ -41,7 +43,7 @@ int		ft_atoi(const char *str);
  * @param str a pointer to the string to be converted.
  * @return the converted long integer value.
  */
-long ft_atol(const char *str);
+long	ft_atol(const char *str);
 
 /**
  * @brief Fills the memory with zero bytes.
@@ -408,6 +410,8 @@ int		ft_tolower(int c);
  * @param cols mtx cols.
  */
 char	**mtx_alloc(int rows, int cols);
+
+char	*put_binary(int nbr);
 
 /**
  * @brief Populates an entire matrix with 'X' - useful for floodfill.

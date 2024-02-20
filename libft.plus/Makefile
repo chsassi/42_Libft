@@ -29,10 +29,10 @@ SRC = ./char.handling/ft_isalnum.c \
 	./char.handling/ft_isprint.c \
 	./char.handling/ft_tolower.c \
 	./char.handling/ft_toupper.c \
-	./conversions/ft_atol.c \
 	./conversions/ft_atoi.c \
 	./conversions/ft_itoa.c \
 	./conversions/ft_putnbr_fd.c \
+	./conversions/binary.c \
 	./ft_printf/ft_printf.c \
 	./ft_printf/ft_putaddr.c \
 	./ft_printf/ft_putchar.c \
@@ -88,7 +88,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@echo "$(BLUE)	LIBFT COMPILED! 📖✅$(RESET)"
 	@$(ARCHIVE) $(OBJ)
-
 RM = rm -f
 
 clean:
@@ -97,10 +96,9 @@ clean:
 fclean: clean
 	@$(RM) */**/*.o
 	@$(RM) $(NAME)
-	@echo "$(RED)	LIBFT DESTROYED! 📖🔴$(RESET)"
+	@echo "$(RED)	LIBFT DESTROYED! 🗑️ 🔴 $(RESET)"
 
 re: fclean all
 
 # .SILENT:
-
 .PHONY: all clean fclean re
