@@ -20,6 +20,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <stddef.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <strings.h>
 
@@ -29,77 +30,15 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-/**
- * @brief Converts an integer to binary and puts every bit in a string.
- * @param nbr the integer that needs to be converted in binary.
- * @return the octet.
- */
-char		*binary_to_octet(int nb);
+typedef struct s_dll
+{
+	int				value;
+	int				index;
+	struct s_dll	*prev;
+	struct s_dll	*next;
+}	t_dll;
 
-/**
- * @brief Converts a string to an integer.
- * @param str a pointer to the string to be converted.
- * @return the converted integer value.
- */
-int		ft_atoi(const char *str);
-
-/**
- * @brief Converts a string to a long integer.
- * @param str a pointer to the string to be converted.
- * @return the converted long integer value.
- */
-long	ft_atol(const char *str);
-
-/**
- * @brief Fills the memory with zero bytes.
- * @param s a pointer to the memory area.
- * @param n the number of bytes to be set to zero.
- */
-void	ft_bzero(void *s, size_t n);
-
-/**
- * @brief Allocates memory for an array of nmemb elements of size bytes each and returns a pointer to the allocated memory.
- * The memory is set to zero.
- * @param nmemb the number of elements to create.
- * @param size the size of each element.
- * @return a pointer to the created array. NULL if the allocation failed.
- */
-void	*ft_calloc(size_t nmemb, size_t size);
-
-/**
- * @brief Copies a matrix.
- * @param mtx matrix.
- * @return matrix copy.
- */
-char	**copy_mtx(char** mtx);
-
-/**
- * @brief Calculates cols in a matrix.
- * @param mtx matrix.
- * @return matrix cols.
- */
-int		count_cols(char **mtx);
-
-/**
- * @brief Counts an element (char) inside a matrix.
- * @param mtx matrix.
- * @param c the char to count.
- * @return a pointer to the created array. NULL if the allocation failed.
- */
-int		count_elements(char **mtx, char c);
-
-/**
- * @brief Calculates rows in a matrix.
- * @param mtx matrix.
- * @return matrix rows.
- */
-int		count_rows(char **mtx);
-
-/**
- * @brief Frees a matrix.
- * @param mtx matrix.
- */
-void	free_mtx(char **mtx);
+/* CHAR HANDLING */
 
 /**
  * @brief Checks if the given character is an alphanumeric character.
@@ -137,11 +76,73 @@ int		ft_isdigit(int c);
 int		ft_isprint(int c);
 
 /**
+ * @brief Outputs a character to the specified file descriptor.
+ * @param c the character to be output.
+ * @param fd the file descriptor.
+ */
+void	ft_putchar_fd(char c, int fd);
+
+/**
+ * @brief Outputs a string followed by a newline character to the specified file descriptor.
+ * @param s a pointer to the string to be output.
+ * @param fd the file descriptor.
+ */
+void	ft_putendl_fd(char *s, int fd);
+
+/**
+ * @brief Converts a lowercase letter to uppercase.
+ * @param c an integer representing a character.
+ * @return the uppercase equivalent of c, if c is a lowercase letter, otherwise returns c.
+ */
+int		ft_toupper(int c);
+
+/**
+ * @brief Converts an uppercase letter to lowercase.
+ * @param c an integer representing a character.
+ * @return the lowercase equivalent of c, if c is an uppercase letter, otherwise returns c.
+ */
+int		ft_tolower(int c);
+
+/* CONVERSIONS */
+
+/**
+ * @brief Converts a string to a long.
+ * @param str a pointer to the string to be converted.
+ * @return the converted long value.
+ */
+long	ft_atol(const char *str);
+
+/**
+ * @brief Converts a string to an integer.
+ * @param str a pointer to the string to be converted.
+ * @return the converted integer value.
+ */
+int		ft_atoi(const char *str);
+
+/**
+ * @brief Converts a string to an integer in any base.
+ * @param str a pointer to the string to be converted.
+ * @return the converted integer value.
+ */
+int		ft_atoi_base(char *str, char *base);
+
+/**
  * @brief Converts an integer to a string.
  * @param nb the integer to be converted.
  * @return a pointer to the converted string. NULL if the allocation failed.
  */
 char	*ft_itoa(int nb);
+
+/**
+ * @brief Outputs an integer to the specified file descriptor.
+ * @param n the integer to be output.
+ * @param fd the file descriptor.
+ */
+void	ft_putnbr_fd(int n, int fd);
+
+/* LIST HANDLING */
+
+// Linked Lists
 
 /**
  * @brief Adds an element to the end of a linked list.
@@ -208,6 +209,116 @@ t_list	*ft_lstnew(void *content);
  */
 int		ft_lstsize(t_list *lst);
 
+// Double Linked Lists
+
+/**
+ * @brief Adds an element to the end of a double linked list.
+ * @param lst a pointer to the pointer to the first element of the list.
+ * @param new a pointer to the element to be added.
+ */
+void	dll_add_back(t_dll **lst, t_dll *new);
+
+/**
+ * @brief Adds an element to the beginning of a double linked list.
+ * @param lst a pointer to the pointer to the first element of the list.
+ * @param new a pointer to the element to be added.
+ */
+void	dll_add_front(t_dll **lst, t_dll *new);
+
+
+t_dll	*dll_iterate(t_dll *lst);
+
+
+t_dll	*dll_last(t_dll *lst);
+
+
+void	dll_clear(t_dll **lst);
+
+
+t_dll	*dll_new(int value);
+
+
+int		dll_size(t_dll *lst);
+
+
+int		find_min_index(t_dll *pStack);
+
+
+int		find_min_value(t_dll *pStack);
+
+
+int		find_max_index(t_dll *pStack);
+
+
+int		find_max_value(t_dll *pStack);
+
+
+void	set_index(t_dll **list);
+
+/* MATRIX HANDLING */
+
+/**
+ * @brief Copies a matrix.
+ * @param mtx matrix.
+ * @return matrix copy.
+ */
+char	**copy_mtx(char **mtx);
+
+/**
+ * @brief Calculates cols in a matrix.
+ * @param mtx matrix.
+ * @return matrix cols.
+ */
+int		count_cols(char **mtx);
+
+/**
+ * @brief Counts an element (char) inside a matrix.
+ * @param mtx matrix.
+ * @param c the char to count.
+ * @return a pointer to the created array. NULL if the allocation failed.
+ */
+int		count_elements(char **mtx, char c);
+
+/**
+ * @brief Calculates rows in a matrix.
+ * @param mtx matrix.
+ * @return matrix rows.
+ */
+int		count_rows(char **mtx);
+
+/**
+ * @brief Frees a matrix.
+ * @param mtx matrix.
+ */
+void	free_mtx(char **mtx);
+
+/**
+ * @brief Allocates a matrix.
+ * @param mtx matrix.
+ * @param rows mtx rows.
+ * @param cols mtx cols.
+ */
+char	**mtx_alloc(int rows, int cols);
+
+/**
+ * @brief Populates an entire matrix with 'X' - useful for floodfill.
+ * @param mtx matrix.
+ * @param rows mtx rows.
+ * @param cols mtx cols.
+ */
+void	reset_matrix_to_x(char **mtx, int cols, int rows);
+
+/* MEMORY MANAGEMENT */
+
+/**
+ * @brief Allocates memory for an array of nmemb elements of size bytes each and returns a pointer to the allocated memory.
+ * The memory is set to zero.
+ * @param nmemb the number of elements to create.
+ * @param size the size of each element.
+ * @return a pointer to the created array. NULL if the allocation failed.
+ */
+void	*ft_calloc(size_t nmemb, size_t size);
+
 /**
  * @brief Locates the first occurrence of a character in a block of memory.
  * @param s a pointer to the block of memory to be searched.
@@ -253,26 +364,17 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
  */
 void	*ft_memset(void *s, int c, size_t len);
 
-/**
- * @brief Outputs a character to the specified file descriptor.
- * @param c the character to be output.
- * @param fd the file descriptor.
- */
-void	ft_putchar_fd(char c, int fd);
+/* STRING HANDLING */
 
 /**
- * @brief Outputs a string followed by a newline character to the specified file descriptor.
- * @param s a pointer to the string to be output.
- * @param fd the file descriptor.
+ * @brief Fills the memory with zero bytes.
+ * @param s a pointer to the memory area.
+ * @param n the number of bytes to be set to zero.
  */
-void	ft_putendl_fd(char *s, int fd);
+void	ft_bzero(void *s, size_t n);
 
-/**
- * @brief Outputs an integer to the specified file descriptor.
- * @param n the integer to be output.
- * @param fd the file descriptor.
- */
-void	ft_putnbr_fd(int n, int fd);
+
+int		ft_isint(char *str);
 
 /**
  * @brief Outputs a string to the specified file descriptor.
@@ -393,37 +495,5 @@ char	*ft_strtrim(char const *s1, char const *set);
  * @return a pointer to the extracted substring. NULL if the allocation failed.
  */
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-
-/**
- * @brief Converts a lowercase letter to uppercase.
- * @param c an integer representing a character.
- * @return the uppercase equivalent of c, if c is a lowercase letter, otherwise returns c.
- */
-int		ft_toupper(int c);
-
-/**
- * @brief Converts an uppercase letter to lowercase.
- * @param c an integer representing a character.
- * @return the lowercase equivalent of c, if c is an uppercase letter, otherwise returns c.
- */
-int		ft_tolower(int c);
-
-/**
- * @brief Allocates a matrix.
- * @param mtx matrix.
- * @param rows mtx rows.
- * @param cols mtx cols.
- */
-char	**mtx_alloc(int rows, int cols);
-
-char	*put_binary(int nbr);
-
-/**
- * @brief Populates an entire matrix with 'X' - useful for floodfill.
- * @param mtx matrix.
- * @param rows mtx rows.
- * @param cols mtx cols.
- */
-void	reset_matrix_to_x(char **mtx, int cols, int rows);
 
 #endif

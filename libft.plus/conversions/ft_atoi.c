@@ -6,16 +6,16 @@
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:19:01 by chsassi           #+#    #+#             */
-/*   Updated: 2023/10/14 16:17:38 by chsassi          ###   ########.fr       */
+/*   Updated: 2024/04/28 18:01:32 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	n;
+	int		i;
+	int		sign;
+	int		n;
 
 	i = 0;
 	sign = 1;
@@ -37,8 +37,8 @@ int	ft_atoi(const char *str)
 	return (n * sign);
 }
 
-/*int		main(void)
+/* int		main(void)
 {
-	char	str[] = "    -12345ab";
+	char	str[] = "21474836482232";
 	printf("Atoi:	%i", ft_atoi(str));
-}*/
+} */

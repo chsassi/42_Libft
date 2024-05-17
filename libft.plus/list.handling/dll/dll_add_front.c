@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   dll_add_front.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 14:35:54 by chsassi           #+#    #+#             */
-/*   Updated: 2024/04/28 18:01:33 by chsassi          ###   ########.fr       */
+/*   Created: 2024/04/03 14:02:25 by chsassi           #+#    #+#             */
+/*   Updated: 2024/04/03 14:02:33 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	dll_add_front(t_dll **lst, t_dll *new)
 {
-	size_t					i;
-	const unsigned char		*res;
-	unsigned char			occ;
+	t_dll	*head;
 
-	i = 0;
-	res = (const unsigned char *)s;
-	occ = (unsigned char)c;
-	while (i < n)
+	head = *lst;
+	if (!lst || !new)
+		return ;
+	if (!head)
 	{
-		if (res[i] == occ)
-			return ((void *)(res + i));
-		i++;
+		new->prev = NULL;
+		new->next = NULL;
+		new->index = 0;
+		*lst = new;
+		return ;
 	}
-	return (NULL);
+	new->next = head;
+	new->prev = NULL;
+	head->prev = new;
+	new->index = 0;
+	*lst = new;
+	set_index(lst);
 }
-
-/* int		main(void)
-{
-	char	*str = "Casa mia";
-	char	c = 'm';
-	size_t	n = 6;
-
-	str = ft_memchr(str, c, n);
-	printf("Memchr:		%s", str);
-} */

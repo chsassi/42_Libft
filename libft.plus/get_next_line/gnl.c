@@ -6,7 +6,7 @@
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:46:08 by chsassi           #+#    #+#             */
-/*   Updated: 2023/12/13 14:23:48 by chsassi          ###   ########.fr       */
+/*   Updated: 2024/04/28 18:01:33 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "gnl.h"
@@ -53,6 +53,12 @@ static void	read_until_nl(int fd, char **res, char **waste, int bytes)
 			break ;
 	}
 	free(line);
+	if (waste[fd] && waste[fd][0] == '\0')
+	{
+		free(waste[fd]);
+		waste[fd] = NULL;
+		return ;
+	}
 }
 
 char	*gnl(int fd)
@@ -70,6 +76,11 @@ char	*gnl(int fd)
 	{
 		tmp = strjoin_gnl(&waste[fd], NULL);
 		bytes = !ft_find_nl(&res, &waste[fd], tmp, 1);
+		if (!bytes)
+		{
+			free(waste[fd]);
+			return (NULL);
+		}
 		free(tmp);
 	}
 	read_until_nl(fd, &res, &waste[fd], bytes);

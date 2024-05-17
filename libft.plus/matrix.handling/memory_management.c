@@ -6,7 +6,7 @@
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:05:40 by chsassi           #+#    #+#             */
-/*   Updated: 2024/02/01 20:13:14 by chsassi          ###   ########.fr       */
+/*   Updated: 2024/04/28 18:01:33 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	**mtx_alloc(int rows, int cols)
 	char	**mtx;
 
 	i = 0;
-	mtx = ft_calloc(rows, sizeof(char*));
+	mtx = ft_calloc(rows, sizeof(char *));
 	if (!mtx)
 		ft_printf("Error during row allocation.\n");
 	while (i < rows)
@@ -31,10 +31,10 @@ char	**mtx_alloc(int rows, int cols)
 	return (mtx);
 }
 
-char	**copy_mtx(char** mtx)
+char	**copy_mtx(char **mtx)
 {
-	char** res;
-	int rows;
+	char	**res;
+	int		rows;
 
 	rows = -1;
 	res = ft_calloc(count_rows(mtx), sizeof(char *));
@@ -46,8 +46,10 @@ char	**copy_mtx(char** mtx)
 void	free_mtx(char **mtx)
 {
 	int	i;
-	int len;
+	int	len;
 
+	if (!mtx)
+		return ;
 	len = count_rows(mtx);
 	i = 0;
 	while (i < len)

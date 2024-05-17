@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   dll_set_index.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 14:35:54 by chsassi           #+#    #+#             */
-/*   Updated: 2024/04/28 18:01:33 by chsassi          ###   ########.fr       */
+/*   Created: 2024/04/22 21:57:35 by chsassi           #+#    #+#             */
+/*   Updated: 2024/04/22 21:57:41 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	set_index(t_dll **stack)
 {
-	size_t					i;
-	const unsigned char		*res;
-	unsigned char			occ;
+	t_dll	*tmp;
+	int		index;
 
-	i = 0;
-	res = (const unsigned char *)s;
-	occ = (unsigned char)c;
-	while (i < n)
+	index = 0;
+	tmp = *stack;
+	while (tmp)
 	{
-		if (res[i] == occ)
-			return ((void *)(res + i));
-		i++;
+		tmp->index = index;
+		tmp = tmp->next;
+		index++;
 	}
-	return (NULL);
 }
-
-/* int		main(void)
-{
-	char	*str = "Casa mia";
-	char	c = 'm';
-	size_t	n = 6;
-
-	str = ft_memchr(str, c, n);
-	printf("Memchr:		%s", str);
-} */

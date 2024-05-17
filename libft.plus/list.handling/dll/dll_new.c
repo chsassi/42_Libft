@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   dll_new.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 17:16:00 by chsassi           #+#    #+#             */
-/*   Updated: 2023/11/13 17:16:04 by chsassi          ###   ########.fr       */
+/*   Created: 2024/03/30 15:47:09 by chsassi           #+#    #+#             */
+/*   Updated: 2024/04/03 14:02:33 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+t_dll	*dll_new(int value)
 {
-	if (!lst)
-		return ;
-	(*del)(lst->content);
-	free(lst);
+	t_dll	*new;
+
+	new = ft_calloc(1, sizeof(t_dll));
+	if (!new)
+		return (NULL);
+	new->value = value;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
 }

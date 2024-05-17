@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:45:20 by chsassi           #+#    #+#             */
-/*   Updated: 2023/11/09 16:45:22 by chsassi          ###   ########.fr       */
+/*   Created: 2023/11/05 21:36:23 by chsassi           #+#    #+#             */
+/*   Updated: 2024/04/03 14:02:33 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*last;
-
-	last = ft_lstlast(*lst);
-	if (!lst)
-		return ;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	last->next = new;
+	new->next = *lst;
+	*lst = new;
 }
 
-/* void	print_list(t_list *lst)
+/* void print_list(t_list *lst)
 {
 	while (lst)
 	{
@@ -50,8 +41,8 @@ int main(void)
 	node2->content = &n2;
 	node2->next = NULL;
 
-	ft_lstadd_back(&head, node2);
-	ft_lstadd_back(&head, node1);
+	ft_lstadd_front(&head, node2);
+	ft_lstadd_front(&head, node1);
 	printf("Linked List: ");
 	print_list(head);
 
@@ -61,4 +52,5 @@ int main(void)
 		head = head->next;
 		free(temp);
 	}
-} */
+}
+ */

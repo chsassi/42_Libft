@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_isint.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 11:25:09 by chsassi           #+#    #+#             */
-/*   Updated: 2023/11/06 11:25:10 by chsassi          ###   ########.fr       */
+/*   Created: 2024/03/13 19:44:41 by chsassi           #+#    #+#             */
+/*   Updated: 2024/04/28 18:01:33 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_isint(char *str)
 {
-	t_list	*new;
+	int	i;
 
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
-}
-
-/* int		main(void)
-{
-	int		n = 42;
-	t_list	*node = ft_lstnew(&n);
-
-	if (node)
+	i = -1;
+	while (str && str[++i])
 	{
-		printf("Content: %d\n", *(int *)(node->content));
-		printf("Next: %p\n", (void *)node->next);
-		free(node);
+		if (str[0] == '-' || (str[i] >= '0' && str[i] <= '9'))
+			return (1);
 	}
-	else
-		printf("Malloc failed\n");
-} */
+	return (0);
+}

@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   dll_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 14:35:54 by chsassi           #+#    #+#             */
-/*   Updated: 2024/04/28 18:01:33 by chsassi          ###   ########.fr       */
+/*   Created: 2024/03/30 15:47:09 by chsassi           #+#    #+#             */
+/*   Updated: 2024/04/03 14:02:33 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	dll_size(t_dll *lst)
 {
-	size_t					i;
-	const unsigned char		*res;
-	unsigned char			occ;
+	int		len;
 
-	i = 0;
-	res = (const unsigned char *)s;
-	occ = (unsigned char)c;
-	while (i < n)
+	len = 0;
+	while (lst != NULL)
 	{
-		if (res[i] == occ)
-			return ((void *)(res + i));
-		i++;
+		len++;
+		lst = lst->next;
 	}
-	return (NULL);
+	return (len);
 }
-
-/* int		main(void)
-{
-	char	*str = "Casa mia";
-	char	c = 'm';
-	size_t	n = 6;
-
-	str = ft_memchr(str, c, n);
-	printf("Memchr:		%s", str);
-} */

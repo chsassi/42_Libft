@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chsassi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 14:35:54 by chsassi           #+#    #+#             */
-/*   Updated: 2024/04/28 18:01:33 by chsassi          ###   ########.fr       */
+/*   Created: 2023/11/06 14:57:01 by chsassi           #+#    #+#             */
+/*   Updated: 2024/04/03 14:02:33 by chsassi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t					i;
-	const unsigned char		*res;
-	unsigned char			occ;
+	t_list	*new;
 
-	i = 0;
-	res = (const unsigned char *)s;
-	occ = (unsigned char)c;
-	while (i < n)
-	{
-		if (res[i] == occ)
-			return ((void *)(res + i));
-		i++;
-	}
-	return (NULL);
+	if (!lst)
+		return (NULL);
+	new = lst;
+	while (new->next != NULL)
+		new = new->next;
+	return (new);
 }
-
-/* int		main(void)
-{
-	char	*str = "Casa mia";
-	char	c = 'm';
-	size_t	n = 6;
-
-	str = ft_memchr(str, c, n);
-	printf("Memchr:		%s", str);
-} */
